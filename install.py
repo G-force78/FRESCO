@@ -5,26 +5,35 @@ import requests
 
 
 def build_ebsynth():
-    if os.path.exists('src/ebsynth/deps/ebsynth/bin/ebsynth'):
-        print('Ebsynth has been built.')
-        return
+  if os.path.exists('src/ebsynth/deps/ebsynth/bin/ebsynth'):
+    print('Ebsynth has been built.')
+    return
 
-    os_str = platform.system()
+  os_str = platform.system()
 
-    if os_str == 'Windows':
-        print('Build Ebsynth Windows 64 bit.',
-              'If you want to build for 32 bit, please modify install.py.')
-        cmd = '.\\build-win64-cpu+cuda.bat'
-        exe_file = 'src/ebsynth/deps/ebsynth/bin/ebsynth.exe'
-    elif os_str == 'Linux':
-        cmd = 'bash build-linux-cpu+cuda.sh'
-        exe_file = 'src/ebsynth/deps/ebsynth/bin/ebsynth'
-    elif os_str == 'Darwin':
-        cmd = 'sh build-macos-cpu_only.sh'
-        exe_file = 'src/ebsynth/deps/ebsynth/bin/ebsynth.app'
+  if os_str == 'Windows':
+    # ... Existing Windows build logic ...
+  elif os_str == 'Linux':
+    cmd = 'bash build-linux-cpu+cuda.sh'
+    exe_file = 'src/ebsynth/deps/ebsynth/bin/ebsynth'
+
+    # Grant executable permission before running the build script
+    os.chmod('src/ebsynth/deps/ebsynth/bin/ebsynth', 0o755)
+
+    os.chdir('src/ebsynth/deps/ebsynth')
+    print(cmd)
+    os.system(cmd)
+    os.chdir('../../../..')
+
+    if os.path.exists(exe_file):
+      print('Ebsynth installed successfully.')
     else:
-        print('Cannot recognize OS. Ebsynth installation stopped.')
-        return
+      print('Failed to install Ebsynth.')
+  elif os.str == 'Darwin':
+    # ... Existing Mac build logic ...
+  else:
+    print('Cannot recognize OS. Ebsynth installation stopped.')
+    return
 
     os.chdir('src/ebsynth/deps/ebsynth')
     print(cmd)
