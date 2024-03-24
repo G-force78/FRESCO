@@ -1,0 +1,17 @@
+diffusers 
+gradio
+numba
+imageio-ffmpeg
+transformers
+torchvision
+opencv-python
+einops
+matplotlib
+timm
+av
+basicsr
+transformers
+opencv-contrib-python
+einops
+matplotlib
+accelerate
