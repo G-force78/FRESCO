@@ -355,7 +355,7 @@ with block:
     with gr.Row():
         with gr.Column():
             input_path = gr.Video(label='Input Video',
-                                  source='upload',
+                                  #source='upload',
                                   format='mp4',
                                   visible=True)
             prompt = gr.Textbox(label='Prompt')
@@ -552,4 +552,4 @@ with block:
     run_button1.click(fn=process1, inputs=ips, outputs=[result_keyframe])
     run_button2.click(fn=process2, inputs=ips, outputs=[result_video])
 
-block.launch()
+block.launch(Share=True)
