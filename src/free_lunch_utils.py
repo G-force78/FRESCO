@@ -3,9 +3,11 @@ from typing import Any, Dict, Optional, Tuple
 import torch
 import torch.fft as fft
 from diffusers.utils import is_torch_version
-from diffusers.models.unet_2d_condition import logger as logger2d
-from diffusers.models.unet_3d_condition import logger as logger3d
-
+#from diffusers.models.unet_2d_condition import logger as logger2d
+from diffusers.models.unets.unet_2d_condition import UNet2DConditionOutput, UNet2DConditionModel
+from diffusers.models.unets.unet_3d_condition import UNet3DConditionOutput, UNet3DConditionModel
+#from diffusers.models import unet_3d_condition 
+#from unet_3d_condition import logger as logger3d
 
 def isinstance_str(x: object, cls_name: str):
     """
