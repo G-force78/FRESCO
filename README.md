@@ -1,7 +1,7 @@
 
 # ADDED AND MODIFIED SOME THINGS FOR RUNNING FROM COLAB
 
-Change this file  /usr/local/lib/python3.10/dist-packages/diffusers/models/__init__.py to 
+In colab change this file  /usr/local/lib/python3.10/dist-packages/diffusers/models/__init__.py to https://github.com/G-force78/FRESCO/blob/main/_init_.py
 
 # FRESCO - Official PyTorch Implementation
 
