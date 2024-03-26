@@ -282,7 +282,7 @@ if __name__ == '__main__':
                         help='Path to output video')
     parser.add_argument('--fps',
                         type=float,
-                        default=30,
+                        default=15,
                         help='The FPS of output video')
     parser.add_argument("--key_ind", type=int, nargs='+', default=[1], help="key frame index")
     parser.add_argument('--key',
