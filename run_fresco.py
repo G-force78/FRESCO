@@ -13,6 +13,7 @@ import torch
 import torchvision
 import diffusers
 from diffusers import StableDiffusionPipeline, AutoencoderKL, DDPMScheduler, ControlNetModel
+from diffusers import AutoPipelineForText2Image, LCMScheduler
 
 from src.utils import *
 from src.keyframe_selection import get_keyframe_ind
@@ -73,11 +74,14 @@ def get_models(config):
     
     # diffusion model
     vae = AutoencoderKL.from_pretrained("stabilityai/sd-vae-ft-mse", torch_dtype=torch.float16)
-    pipe = StableDiffusionPipeline.from_pretrained(config['sd_path'], vae=vae, torch_dtype=torch.float16)
-    pipe.scheduler = DDPMScheduler.from_config(pipe.scheduler.config)
+    #pipe = StableDiffusionPipeline.from_pretrained(config['sd_path'], vae=vae, torch_dtype=torch.float16)
+    #pipe.scheduler = DDPMScheduler.from_config(pipe.scheduler.config)
+    pipe = AutoPipelineForText2Image.from_pretrained('lykon/dreamshaper-8-lcm', torch_dtype=torch.float16, variant="fp16")
+    pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
+    pipe = pipe.to("cuda")
     #noise_scheduler = DDPMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
-    pipe.to("cuda")
-    pipe.scheduler.set_timesteps(config['num_inference_steps'], device=pipe._execution_device)
+    #pipe.to("cuda")
+    #pipe.scheduler.set_timesteps(config['num_inference_steps'], device=pipe._execution_device)
     
     if config['use_freeu']:
         from src.free_lunch_utils import apply_freeu
@@ -111,7 +115,7 @@ def apply_control(x, detector, config):
 def run_keyframe_translation(config):
     pipe, frescoProc, controlnet, detector, flow_model, sod_model = get_models(config)
     device = pipe._execution_device
-    guidance_scale = 7.5
+    guidance_scale = 2
     do_classifier_free_guidance = guidance_scale > 1
     assert(do_classifier_free_guidance)
     timesteps = pipe.scheduler.timesteps
