@@ -5,7 +5,7 @@ mininterv: 2 # for keyframe selection
 maxinterv: 2 # for keyframe selection
 
 # diffusion
-seed:0
+seed: 0
 prompt: 'photo of muscular bearded guy in a worn mech suit, light bokeh, intricate, steel metal, elegant, sharp focus, soft lighting, vibrant colors '
 sd_path: 'Lykon/dreamshaper-8-lcm' 
 use_controlnet: True
@@ -14,9 +14,9 @@ cond_scale: 0.7
 use_freeu: False
 
 # video-to-video translation 
-batch_size: 4
-num_inference_steps: 5
-num_warmup_steps: 5
+batch_size: 3
+num_inference_steps: 4
+num_warmup_steps: 0
 end_opt_step: 15
 run_ebsynth: True
 max_process: 4
