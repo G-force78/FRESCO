@@ -5,8 +5,8 @@ mininterv: 2 # for keyframe selection
 maxinterv: 2 # for keyframe selection
 
 # diffusion
-seed: 0
-prompt: 'a clown, RAW photo, subject, 8k uhd, dslr, Fujifilm XT3 '
+seed:0
+prompt: 'photo of muscular bearded guy in a worn mech suit, light bokeh, intricate, steel metal, elegant, sharp focus, soft lighting, vibrant colors '
 sd_path: 'Lykon/dreamshaper-8-lcm' 
 use_controlnet: True
 controlnet_type: 'depth'  # 'hed', 'canny'
