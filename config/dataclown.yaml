@@ -1,21 +1,21 @@
 # data
-file_path: '/content/FRESCO/Odata.mp4'
-save_path: './output/data/'
+file_path: '/content/FRESCO/om.mp4'
+save_path: './output/om/'
 mininterv: 2 # for keyframe selection
 maxinterv: 2 # for keyframe selection
 
 # diffusion
 seed: 0
 prompt: 'a clown, RAW photo, subject, 8k uhd, dslr, Fujifilm XT3 '
-sd_path: 'SG161222/Realistic_Vision_V5.1_noVAE' 
+sd_path: 'Lykon/dreamshaper-8-lcm' 
 use_controlnet: True
 controlnet_type: 'depth'  # 'hed', 'canny'
 cond_scale: 0.7
 use_freeu: False
 
 # video-to-video translation 
-batch_size: 3
-num_inference_steps: 15
+batch_size: 4
+num_inference_steps: 5
 num_warmup_steps: 5
 end_opt_step: 15
 run_ebsynth: True
