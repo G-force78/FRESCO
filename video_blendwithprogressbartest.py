@@ -33,6 +33,7 @@ if os_str == 'Windows':
     ebsynth_bin = '.\\src\\ebsynth\\deps\\ebsynth\\bin\\ebsynth.exe'
 elif os_str == 'Linux':
     ebsynth_bin = './src/ebsynth/deps/ebsynth/bin/ebsynth'
+    os.chmod(exe_file, 0o755)
 elif os_str == 'Darwin':
     ebsynth_bin = './src/ebsynth/deps/ebsynth/bin/ebsynth.app'
 else:
@@ -285,7 +286,7 @@ if __name__ == '__main__':
                         help='Path to output video')
     parser.add_argument('--fps',
                         type=float,
-                        default=30,
+                        default=15,
                         help='The FPS of output video')
     parser.add_argument("--key_ind", type=int, nargs='+', default=[1], help="key frame index")
     parser.add_argument('--key',
