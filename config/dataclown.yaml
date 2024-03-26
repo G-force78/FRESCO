@@ -1,0 +1,27 @@
+# data
+file_path: '/content/FRESCO/Odata.mp4'
+save_path: './output/data/'
+mininterv: 2 # for keyframe selection
+maxinterv: 2 # for keyframe selection
+
+# diffusion
+seed: 0
+prompt: 'a clown, RAW photo, subject, 8k uhd, dslr, Fujifilm XT3 '
+sd_path: 'SG161222/Realistic_Vision_V5.1_noVAE' 
+use_controlnet: True
+controlnet_type: 'depth'  # 'hed', 'canny'
+cond_scale: 0.7
+use_freeu: False
+
+# video-to-video translation 
+batch_size: 3
+num_inference_steps: 15
+num_warmup_steps: 5
+end_opt_step: 15
+run_ebsynth: True
+max_process: 4
+
+# supporting model
+gmflow_path: './model/gmflow_sintel-0c07dcb3.pth'
+sod_path: './model/epoch_resnet.pth'
+use_salinecy: True
