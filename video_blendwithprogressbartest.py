@@ -74,7 +74,7 @@ def g_error_mask(dist1, dist2, weight1=1, weight2=1):
 
 def create_sequence(base_dir, key_ind, key_dir):
     sequence = VideoSequence(base_dir, key_ind, 'video', key_dir,
-                             'tmp', '%04d.jpg', '%04d.jpg')
+                             'tmp', '%04d.jpg')
     return sequence
 
 
