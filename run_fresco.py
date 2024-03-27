@@ -116,7 +116,7 @@ def apply_control(x, detector, config):
 def run_keyframe_translation(config):
     pipe, frescoProc, controlnet, detector, flow_model, sod_model = get_models(config)
     device = pipe._execution_device
-    guidance_scale = 12
+    guidance_scale = 7
     do_classifier_free_guidance = guidance_scale > 1
     assert(do_classifier_free_guidance)
     timesteps = pipe.scheduler.timesteps
