@@ -1,0 +1,27 @@
+# data
+file_path: '/content/FRESCO/f1.mp4'
+save_path: './output/f1/'
+mininterv: 5 # for keyframe selection
+maxinterv: 15 # for keyframe selection
+
+# diffusion
+seed: 1034581931
+prompt: ' 32 y.o mexican woman, flower dress, standing, natural skin,  8k uhd, high quality, film grain, Fujifilm XT3'
+sd_path: 'SG161222/Realistic_Vision_V4.0_noVAE' 
+use_controlnet: True
+controlnet_type: 'depth'  # 'hed', 'canny'
+cond_scale: 0.7
+use_freeu: False
+
+# video-to-video translation 
+batch_size: 5
+num_inference_steps: 10
+num_warmup_steps: 0
+end_opt_step: 15
+run_ebsynth: False
+max_process: 4
+
+# supporting model
+gmflow_path: './model/gmflow_sintel-0c07dcb3.pth'
+sod_path: './model/epoch_resnet.pth'
+use_salinecy: True
