@@ -8,7 +8,7 @@ import subprocess
 import time
 from typing import List
 import tqdm
-
+import torch
 import cv2
 import numpy as np
 import torch.multiprocessing as mp
@@ -27,6 +27,10 @@ from src.video_util import frame_to_video
 OPEN_EBSYNTH_LOG = False
 MAX_PROCESS = 8
 
+
+
+
+
 os_str = platform.system()
 
 if os_str == 'Windows':
@@ -39,6 +43,12 @@ elif os_str == 'Darwin':
 else:
     print('Cannot recognize OS. Run Ebsynth failed.')
     exit(0)
+
+
+
+
+
+
 
 
 @njit
@@ -64,7 +74,7 @@ def g_error_mask(dist1, dist2, weight1=1, weight2=1):
 
 def create_sequence(base_dir, key_ind, key_dir):
     sequence = VideoSequence(base_dir, key_ind, 'video', key_dir,
-                             'tmp', '%04d.png', '%04d.png')
+                             'tmp', '%04d.jpg', '%04d.jpg')
     return sequence
 
 
