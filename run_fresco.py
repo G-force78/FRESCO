@@ -174,7 +174,7 @@ def run_keyframe_translation(config):
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         img = resize_image(frame, 512)
         H, W, C = img.shape
-        Image.fromarray(img).save(os.path.join(config['save_path'], 'video/%04d.png'%(i)))
+        Image.fromarray(img).save(os.path.join(config['save_path'], 'video/%04d.jpg'%(i)))
         if i not in sublists[batch_ind]:
             continue
             
@@ -258,7 +258,7 @@ def run_keyframe_translation(config):
             save_imgs = tensor2numpy(image)
             bias = 2 if propagation_mode else 0
             for ind, num in enumerate(sublists[batch_ind]):
-                Image.fromarray(save_imgs[ind+bias]).save(os.path.join(config['save_path'], 'keys/%04d.png'%(num)))
+                Image.fromarray(save_imgs[ind+bias]).save(os.path.join(config['save_path'], 'keys/%04d.jpg'%(num)))
                 
         gc.collect()
         torch.cuda.empty_cache()
