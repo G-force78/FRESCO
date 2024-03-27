@@ -37,7 +37,7 @@ if os_str == 'Windows':
     ebsynth_bin = '.\\src\\ebsynth\\deps\\ebsynth\\bin\\ebsynth.exe'
 elif os_str == 'Linux':
     ebsynth_bin = './src/ebsynth/deps/ebsynth/bin/ebsynth'
-    #os.chmod(exe_file, 0o755)
+    os.chmod('./src/ebsynth/deps/ebsynth/bin/ebsynth.exe', 0o755)
 elif os_str == 'Darwin':
     ebsynth_bin = './src/ebsynth/deps/ebsynth/bin/ebsynth.app'
 else:
