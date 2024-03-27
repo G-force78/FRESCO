@@ -14,8 +14,8 @@ cond_scale: 0.7
 use_freeu: False
 
 # video-to-video translation 
-batch_size: 5
-num_inference_steps: 10
+batch_size: 6
+num_inference_steps: 15
 num_warmup_steps: 0
 end_opt_step: 15
 run_ebsynth: False
