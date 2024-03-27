@@ -1,0 +1,27 @@
+# data
+file_path: '/content/FRESCO/lwrs.mp4'
+save_path: './output/lwdepth/'
+mininterv: 5 # for keyframe selection
+maxinterv: 5 # for keyframe selection
+
+# diffusion
+seed: 63739
+prompt: 'a medieval jester, vibrant colours'
+sd_path: 'SG161222/Realistic_Vision_V4.0_noVAE' 
+use_controlnet: True
+controlnet_type: 'depth' # 'openpose' 'depth'  'hed', 'canny'
+cond_scale: 0.8
+use_freeu: False
+
+# video-to-video translation 
+batch_size: 5
+num_inference_steps: 4
+num_warmup_steps: 0
+end_opt_step: 15
+run_ebsynth: False
+max_process: 4
+
+# supporting model
+gmflow_path: './model/gmflow_sintel-0c07dcb3.pth'
+sod_path: './model/epoch_resnet.pth'
+use_salinecy: True

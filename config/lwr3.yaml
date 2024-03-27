@@ -6,16 +6,16 @@ maxinterv: 2 # for keyframe selection
 
 # diffusion
 seed: 1034581931
-prompt: ' photo of 24 y.o woman, beautiful face, blonde, soft lighting, high quality, film grain, Fujifilm XT3'
+prompt: ' Self-portrait,a beautiful cyborg with golden hair, 8k, high quality, film grain, Fujifilm XT3'
 sd_path: 'lykon/dreamshaper-8-lcm' 
 use_controlnet: True
-controlnet_type: 'openpose' #'depth'  'hed', 'canny'
+controlnet_type: 'canny' # 'openpose' 'depth'  'hed', 'canny'
 cond_scale: 0.7
 use_freeu: False
 
 # video-to-video translation 
 batch_size: 6
-num_inference_steps: 5
+num_inference_steps: 4
 num_warmup_steps: 0
 end_opt_step: 15
 run_ebsynth: False
