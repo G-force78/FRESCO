@@ -79,7 +79,7 @@ def get_models(config):
 
     if config["controlnet_type"] == "openpose":
         detector = OpenposeDetector()
-    controlnet = ControlNetModel.from_pretrained("lllyasviel/ControlNet-v1-1"+config['controlnet_type'], torch_dtype=torch.float16)
+    #controlnet = ControlNetModel.from_pretrained("lllyasviel/ControlNet-v1-1"+config['controlnet_type'], torch_dtype=torch.float16)
     controlnet.to("cuda")
 
     if config["controlnet_type"] == "depth":
