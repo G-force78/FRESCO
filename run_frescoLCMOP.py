@@ -20,7 +20,7 @@ from diffusers import (
     ControlNetModel,
 )
 from diffusers import AutoPipelineForText2Image, LCMScheduler
-
+from controlnet_aux import (OpenposeDetector)
 from src.utils import *
 from src.keyframe_selection import get_keyframe_ind
 from src.diffusion_hacked import apply_FRESCO_attn, apply_FRESCO_opt, disable_FRESCO_opt
@@ -42,8 +42,8 @@ def get_models(config):
     from annotator.hed import HEDdetector
     from annotator.canny import CannyDetector
     from annotator.midas import MidasDetector
-    from annotator.openpose import OpenposeDetector
-
+    #from annotator.openpose import OpenposeDetector
+    
     # optical flow
     flow_model = GMFlow(
         feature_channels=128,
@@ -70,7 +70,7 @@ def get_models(config):
     print("create saliency detection model successfully!")
 
     # controlnet
-    if config["controlnet_type"] not in ["hed", "depth", "canny",]:
+    if config["controlnet_type"] not in ["hed", "depth", "canny", "openpose"]:
         print("unsupported control type, set to hed")
         config["controlnet_type"] = "hed"
     controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-"+config['controlnet_type'], 
@@ -79,6 +79,7 @@ def get_models(config):
 
     if config["controlnet_type"] == "openpose":
         detector = OpenposeDetector()
+    controlnet = OpenposeDetector.from_pretrained("lllyasviel/Annotators")
     #controlnet = ControlNetModel.from_pretrained("lllyasviel/ControlNet-v1-1"+config['controlnet_type'], torch_dtype=torch.float16)
     controlnet.to("cuda")
 
@@ -135,6 +136,8 @@ def apply_control(x, detector, config):
         detected_map, _ = detector(x)
     elif config["controlnet_type"] == "canny":
         detected_map = detector(x, 50, 100)
+    elif config["controlnet_type"] == "openpose":
+        detected_map = detector(x)
     else:
         detected_map = detector(x)
     return detected_map
