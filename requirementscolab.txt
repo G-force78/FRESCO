@@ -15,3 +15,4 @@ opencv-contrib-python
 einops
 matplotlib
 accelerate
+xformers
