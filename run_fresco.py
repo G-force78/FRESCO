@@ -83,7 +83,7 @@ def get_models(config):
     #noise_scheduler = DDPMScheduler.from_pretrained("runwayml/stable-diffusion-v1-5", subfolder="scheduler")
     #pipe.to("cuda")
     pipe.scheduler.set_timesteps(config['num_inference_steps'], device=pipe._execution_device)
-    
+    pipe.enable_xformers_memory_efficient_attention()
     if config['use_freeu']:
         from src.free_lunch_utils import apply_freeu
         apply_freeu(pipe, b1=1.2, b2=1.5, s1=1.0, s2=1.0)
