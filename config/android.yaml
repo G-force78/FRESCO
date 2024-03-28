@@ -1,0 +1,27 @@
+# data
+file_path: ''"
+save_path: './output/data/'
+mininterv: 2 # for keyframe selection
+maxinterv: 15 # for keyframe selection
+
+# diffusion
+seed: 0
+prompt: 'photorealistic digital painting of an android, HD, octane render'
+sd_path: 'Neurogen/neurogen' 
+use_controlnet: True
+controlnet_type: 'depth'  # 'hed', 'canny'
+cond_scale: 0.7
+use_freeu: False
+
+# video-to-video translation 
+batch_size: 6
+num_inference_steps: 10
+num_warmup_steps: 5
+end_opt_step: 15
+run_ebsynth: False
+max_process: 4
+
+# supporting model
+gmflow_path: './model/gmflow_sintel-0c07dcb3.pth'
+sod_path: './model/epoch_resnet.pth'
+use_salinecy: True
