@@ -16,3 +16,4 @@ einops
 matplotlib
 accelerate
 xformers
+controlnet-aux==0.0.7
