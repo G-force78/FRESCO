@@ -6,7 +6,7 @@ app = FaceAnalysis(name="buffalo_l", providers=['CUDAExecutionProvider', 'CPUExe
 app.prepare(ctx_id=0, det_size=(640, 640))
 
 
-images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"]
+images = [""]
 
 faceid_embeds = []
 for image in images:
